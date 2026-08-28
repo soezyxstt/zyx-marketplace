@@ -9,9 +9,19 @@
       "name": "zyx-authoring-mcp",
       "source": {
         "source": "github",
-        "repo": "soezyxstt/zyx-authoring-mcp"
+        "repo": "soezyxstt/zyx-authoring-mcp",
+        "ref": "main"
       },
       "description": "ZYX Authoring MCP plugin for source-pack, idea-bundle, and product-bundle authoring workflows"
+    },
+    {
+      "name": "zyx-authoring-mcp-staging",
+      "source": {
+        "source": "github",
+        "repo": "soezyxstt/zyx-authoring-mcp",
+        "ref": "staging"
+      },
+      "description": "ZYX Authoring MCP staging plugin for source-pack, idea-bundle, and product-bundle authoring workflows"
     }
   ]
 }

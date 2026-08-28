@@ -2,11 +2,14 @@
 
 Repository ini adalah marketplace/catalog untuk Claude Code dan ChatGPT/Codex. Marketplace ini mendaftarkan plugin ZYX yang dapat ditemukan dan dipasang melalui host masing-masing.
 
-Katalog Claude Code berada di `.claude-plugin/marketplace.json`. Katalog native Codex berada di `.agents/plugins/marketplace.json`. Keduanya menunjuk ke repository plugin upstream yang sama; repository ini tetap hanya berisi katalog.
+Katalog Claude Code berada di `.claude-plugin/marketplace.json`. Katalog native Codex berada di `.agents/plugins/marketplace.json`. Keduanya menunjuk ke repository plugin upstream yang sama; repository ini tetap hanya berisi katalog. Marketplace mengekspos dua varian plugin:
+
+- `zyx-authoring-mcp` menggunakan branch `main` untuk penggunaan production.
+- `zyx-authoring-mcp-staging` menggunakan branch `staging` untuk pengujian perubahan sebelum production.
 
 ## Plugin
 
-Plugin sebenarnya berada di repository [zyx-authoring-mcp](https://github.com/soezyxstt/zyx-authoring-mcp). Repository plugin upstream menyediakan manifest Claude Code dan Codex. Repository marketplace ini tidak mengubah, menyalin, atau menjalankan source plugin.
+Kedua varian plugin berasal dari repository [zyx-authoring-mcp](https://github.com/soezyxstt/zyx-authoring-mcp). Repository plugin upstream menyediakan manifest Claude Code dan Codex. Repository marketplace ini tidak mengubah, menyalin, atau menjalankan source plugin.
 
 Plugin menyediakan tiga skill:
 
@@ -25,6 +28,7 @@ Di dalam Claude Code, jalankan:
 ```text
 /plugin marketplace add <MARKETPLACE_REPO_URL>
 /plugin install zyx-authoring-mcp@zyx-tools
+/plugin install zyx-authoring-mcp-staging@zyx-tools
 /reload-plugins
 ```
 
@@ -33,6 +37,7 @@ Atau gunakan CLI Claude Code:
 ```text
 claude plugin marketplace add <MARKETPLACE_REPO_URL>
 claude plugin install zyx-authoring-mcp@zyx-tools
+claude plugin install zyx-authoring-mcp-staging@zyx-tools
 ```
 
 ## Instalasi melalui ChatGPT/Codex
@@ -52,7 +57,7 @@ Di dalam Codex, jalankan:
 /plugins
 ```
 
-Untuk ChatGPT Desktop, buka Plugins Directory, pilih marketplace `ZYX Tools`, lalu instal `zyx-authoring-mcp`. Setelah instalasi, mulai chat atau sesi Codex baru agar skill dan MCP tools plugin dimuat.
+Untuk ChatGPT Desktop, buka Plugins Directory, pilih marketplace `Zyx Tools`, lalu instal `zyx-authoring-mcp` untuk production atau `zyx-authoring-mcp-staging` untuk staging. Setelah instalasi, mulai chat atau sesi Codex baru agar skill dan MCP tools plugin dimuat.
 
 ## Skill plugin
 

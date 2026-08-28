@@ -1,7 +1,7 @@
 {
   "name": "zyx-tools",
   "interface": {
-    "displayName": "ZYX Tools"
+    "displayName": "Zyx Tools"
   },
   "plugins": [
     {
@@ -10,6 +10,19 @@
         "source": "url",
         "url": "https://github.com/soezyxstt/zyx-authoring-mcp.git",
         "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "zyx-authoring-mcp-staging",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/soezyxstt/zyx-authoring-mcp.git",
+        "ref": "staging"
       },
       "policy": {
         "installation": "AVAILABLE",
