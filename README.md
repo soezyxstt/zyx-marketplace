@@ -1,72 +1,53 @@
 # ZYX Tools Marketplace
 
-Repository ini adalah marketplace/catalog untuk Claude Code dan ChatGPT/Codex. Marketplace ini mendaftarkan plugin ZYX yang dapat ditemukan dan dipasang melalui host masing-masing.
+Plugin marketplace/catalog for ZYX tooling across Claude Code and Codex-compatible hosts.
 
-Katalog Claude Code berada di `.claude-plugin/marketplace.json`. Katalog native Codex berada di `.agents/plugins/marketplace.json`. Keduanya menunjuk ke repository plugin upstream yang sama; repository ini tetap hanya berisi katalog. Marketplace mengekspos dua varian plugin:
+This repository is intentionally lightweight: it publishes marketplace metadata and points hosts to the upstream [`zyx-authoring-mcp`](https://github.com/soezyxstt/zyx-authoring-mcp) plugin. It does not contain or run the MCP server itself.
 
-- `zyx-authoring-mcp` menggunakan branch `main` untuk penggunaan production.
-- `zyx-authoring-mcp-staging` menggunakan branch `staging` untuk pengujian perubahan sebelum production.
+## Catalogs
 
-## Plugin
+- `.claude-plugin/marketplace.json` — Claude Code marketplace catalog
+- `.agents/plugins/marketplace.json` — Codex-compatible marketplace catalog
 
-Kedua varian plugin berasal dari repository [zyx-authoring-mcp](https://github.com/soezyxstt/zyx-authoring-mcp). Repository plugin upstream menyediakan manifest Claude Code dan Codex. Repository marketplace ini tidak mengubah, menyalin, atau menjalankan source plugin.
+The marketplace exposes production and staging variants of the Zyx Authoring plugin so changes can be validated before being promoted to production.
 
-Plugin menyediakan tiga skill:
+## Zyx Authoring plugin
 
+The upstream plugin currently provides an end-to-end authoring pipeline plus four independently invocable specialist skills:
+
+- `zyx-authoring-pipeline`
 - `zyx-source-pack-mcp`
 - `zyx-idea-bundle-mcp`
 - `zyx-product-bundle-mcp`
+- `zyx-question-authoring-mcp`
 
-Marketplace ini tidak menjalankan server, database, autentikasi, storage, atau MCP HTTP server. Server MCP plugin tetap berjalan pada endpoint remote staging yang dikonfigurasi oleh plugin. Autentikasi plugin menggunakan session OAuth atau connection token sementara.
+The remote MCP remains authoritative for authentication, workflow scope, validation, provenance, quality gates, staging, review, and supported lifecycle operations.
 
-## Instalasi melalui Claude Code
-
-Ganti `<MARKETPLACE_REPO_URL>` dengan URL atau sumber repository marketplace ini setelah repository baru dibuat.
-
-Di dalam Claude Code, jalankan:
+## Architecture
 
 ```text
-/plugin marketplace add <MARKETPLACE_REPO_URL>
-/plugin install zyx-authoring-mcp@zyx-tools
-/plugin install zyx-authoring-mcp-staging@zyx-tools
-/reload-plugins
+Claude / Codex host
+       │
+       ▼
+ZYX Tools Marketplace
+       │
+       ▼
+zyx-authoring-mcp plugin
+       │
+       ▼
+Remote Zyx Authoring MCP
 ```
 
-Atau gunakan CLI Claude Code:
+This marketplace repository does **not** run application servers, databases, authentication services, or storage.
 
-```text
-claude plugin marketplace add <MARKETPLACE_REPO_URL>
-claude plugin install zyx-authoring-mcp@zyx-tools
-claude plugin install zyx-authoring-mcp-staging@zyx-tools
-```
+## Claude Code
 
-## Instalasi melalui ChatGPT/Codex
+Add this repository as a plugin marketplace, then install either the production or staging Zyx Authoring plugin from the catalog. Reload plugins after installation or marketplace updates.
 
-Ganti `<MARKETPLACE_REPO_URL>` dengan URL atau sumber repository marketplace ini setelah repository baru dibuat.
+## Codex-compatible hosts
 
-Untuk Codex CLI, tambahkan marketplace lalu buka plugin browser:
+Add the repository as a plugin marketplace and install the desired Zyx Authoring variant through the host's plugin browser or CLI workflow.
 
-```text
-codex plugin marketplace add <MARKETPLACE_REPO_URL>
-codex
-```
+## Related repository
 
-Di dalam Codex, jalankan:
-
-```text
-/plugins
-```
-
-Untuk ChatGPT Desktop, buka Plugins Directory, pilih marketplace `Zyx Tools`, lalu instal `zyx-authoring-mcp` untuk production atau `zyx-authoring-mcp-staging` untuk staging. Setelah instalasi, mulai chat atau sesi Codex baru agar skill dan MCP tools plugin dimuat.
-
-## Skill plugin
-
-Setelah terpasang di Claude Code, skill plugin dapat digunakan dengan namespace plugin masing-masing:
-
-```text
-/zyx-authoring-mcp:zyx-source-pack-mcp
-/zyx-authoring-mcp:zyx-idea-bundle-mcp
-/zyx-authoring-mcp:zyx-product-bundle-mcp
-```
-
-Di ChatGPT/Codex, plugin dapat dipilih dari plugin browser atau skill selector sesuai host yang digunakan.
+- [`soezyxstt/zyx-authoring-mcp`](https://github.com/soezyxstt/zyx-authoring-mcp) — plugin manifests, skills, and MCP client configuration
