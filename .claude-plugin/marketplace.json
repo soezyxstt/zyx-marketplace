@@ -22,6 +22,15 @@
         "ref": "staging"
       },
       "description": "ZYX Authoring MCP staging plugin for source-pack, idea-bundle, and product-bundle authoring workflows"
+    },
+    {
+      "name": "zyx-content-design",
+      "source": {
+        "source": "github",
+        "repo": "soezyxstt/zyx-content-design",
+        "ref": "main"
+      },
+      "description": "Create and review Zyx visual content with four skills and a shared brand design system."
     }
   ]
 }
