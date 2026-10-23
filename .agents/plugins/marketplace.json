@@ -29,6 +29,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "zyx-content-design",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/soezyxstt/zyx-content-design.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }
