@@ -49,7 +49,7 @@ Related repository: [`soezyxstt/zyx-authoring-mcp`](https://github.com/soezyxstt
 
 It bundles a shared brand design system, 108 assets, fonts, React components, and local render/review tools. The plugin uses its own Zyx logo icon and requires no MCP server or API key. Local rendering requires Python and Chromium.
 
-The source repository is private. Installers need GitHub access to that repository; the public marketplace contains metadata only.
+The source repository is public. This marketplace contains metadata and points hosts to the plugin source.
 
 Claude Code installation:
 
