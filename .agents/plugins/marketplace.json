@@ -18,7 +18,7 @@
       "category": "Productivity"
     },
     {
-      "name": "zyx-authoring-mcp-staging",
+      "name": "zyx-stg",
       "source": {
         "source": "url",
         "url": "https://github.com/soezyxstt/zyx-authoring-mcp.git",
